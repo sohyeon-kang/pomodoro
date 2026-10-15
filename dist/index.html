@@ -7,6 +7,7 @@
 </head>
 <body>
 <svg class="svg-defs" xmlns="http://www.w3.org/2000/svg"><defs>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2.5 2.9 6.1 6.7.9-4.9 4.7 1.2 6.7-5.9-3.2-5.9 3.2 1.2-6.7-4.9-4.7 6.7-.9Z" fill="currentColor" stroke="none"/></symbol>
   <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M9 2h6M12 5V2m0 7v5l3 2M18 6l2-2"/></symbol>
   <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19h16M7 15v-4m5 4V5m5 10V8"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
@@ -29,7 +30,7 @@
 </defs></svg>
 <div class="app-shell">
   <header class="app-header">
-    <a class="brand" href="#timer" aria-label="Pomodoro 홈"><svg><use href="#i-timer"/></svg><span>Pomodoro</span></a>
+    <a class="brand" href="#timer" aria-label="Pomodoro 홈"><span class="brand-mark" aria-hidden="true"><svg><use href="#i-star"/></svg></span><span>Pomodoro</span></a>
     <div class="header-actions">
       <button class="icon-button" data-view="records" aria-label="기록 및 할 일" title="기록 및 할 일"><svg><use href="#i-chart"/></svg></button>
       <button class="icon-button" id="fullscreen-toggle" aria-label="전체 화면" title="전체 화면"><svg><use href="#i-expand"/></svg></button>
@@ -71,7 +72,7 @@
 <dialog id="settings-dialog" aria-labelledby="settings-title">
   <form id="settings-form"><div class="dialog-heading"><h2 id="settings-title">설정</h2><button type="button" class="icon-button" data-close-dialog aria-label="설정 닫기"><svg><use href="#i-close"/></svg></button></div>
     <div class="settings-group"><label class="setting-row"><span>짧은 휴식</span><span class="setting-input"><input id="short-duration" type="number" min="1" max="60" required><span>분</span></span></label><label class="setting-row"><span>긴 휴식<small>집중 4회 완료 후</small></span><span class="setting-input"><input id="long-duration" type="number" min="1" max="60" required><span>분</span></span></label><label class="setting-row"><span>하루 목표</span><span class="setting-input"><input id="daily-goal" type="number" min="1" max="24" required><span>회</span></span></label></div>
-    <div class="settings-group"><label class="setting-row"><span>완료 알림음</span><input class="switch" id="sound-enabled" type="checkbox" role="switch"></label><label class="setting-row"><span>휴식 자동 시작</span><input class="switch" id="auto-break" type="checkbox" role="switch"></label><div class="setting-row"><span>화면 테마</span><button type="button" class="icon-button theme-toggle" id="theme-toggle" aria-label="어두운 테마로 전환" title="테마 변경"><svg><use href="#i-sun"/></svg></button></div></div>
+    <div class="settings-group"><label class="setting-row"><span>완료 알림음</span><input class="switch" id="sound-enabled" type="checkbox" role="switch"></label><label class="setting-row"><span>휴식 자동 시작</span><input class="switch" id="auto-break" type="checkbox" role="switch"></label><label class="setting-row"><span>화면 테마</span><select class="theme-select" id="theme-select"><option value="light">라이트</option><option value="mint">민트</option><option value="dark">다크</option></select></label></div>
     <p class="settings-footnote">설정과 기록은 이 브라우저에 저장됩니다.<br>탭을 닫으면 알림음은 울리지 않습니다.</p><button class="primary-button dialog-save" type="submit">저장</button>
   </form>
 </dialog>

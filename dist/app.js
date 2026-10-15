@@ -237,11 +237,13 @@ document.addEventListener('click',event=>{
 });
 
 function applyTheme() {
+  const colors = { light:'#a3a6a8', mint:'#d9eae8', dark:'#272b31' };
+  if (!Object.hasOwn(colors, data.settings.theme)) data.settings.theme = 'light';
   document.body.dataset.theme=data.settings.theme;
-  $('#theme-toggle').innerHTML=icon(data.settings.theme==='dark'?'moon':'sun');
-  $('#theme-toggle').setAttribute('aria-label',data.settings.theme==='dark'?'밝은 테마로 전환':'어두운 테마로 전환');
+  $('#theme-select').value=data.settings.theme;
+  $('meta[name="theme-color"]').content=colors[data.settings.theme];
 }
-$('#theme-toggle').addEventListener('click',()=>{data.settings.theme=data.settings.theme==='dark'?'light':'dark';applyTheme();persist();});
+$('#theme-select').addEventListener('change',event=>{data.settings.theme=event.target.value;applyTheme();persist();});
 $('#fullscreen-toggle').addEventListener('click',async()=>{
   try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch{toast('이 브라우저에서는 전체 화면을 사용할 수 없어요. F11 키를 사용해 보세요.');}
 });
